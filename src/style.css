@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+}
+
+@layer base { body { @apply min-h-screen bg-slate-950 text-slate-100 antialiased; } button, a { @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500; } }

@@ -11,3 +11,4 @@ src-tauri/target
 src-tauri/gen
 .idea
 /.idea
+.env

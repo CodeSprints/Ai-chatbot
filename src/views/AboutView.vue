@@ -1,1 +1,0 @@
-<template><div class="mx-auto max-w-3xl px-6 py-20"><h1 class="text-3xl font-bold">O projekcie</h1><p class="mt-4 text-slate-400">Zacznij tworzyć, usuwając przykładowe widoki i komponenty.</p></div></template>

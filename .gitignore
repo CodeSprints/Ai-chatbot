@@ -9,3 +9,5 @@ coverage
 !.vscode/settings.json
 src-tauri/target
 src-tauri/gen
+.idea
+/.idea

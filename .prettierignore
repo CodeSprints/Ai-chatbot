@@ -1,6 +1,8 @@
-dist
-coverage
 node_modules
+dist
+.output
+.vinxi
+pnpm-lock.yaml
 package-lock.json
-src-tauri/target
-src-tauri/gen
+bun.lock
+routeTree.gen.ts

@@ -1,13 +1,25 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { computed, ref } from 'vue'
+import ThreadList from '@/components/ThreadList.vue'
+import ChatPanel from '@/components/ChatPanel.vue'
+import { useChat } from '@/composables/useChat'
+
+const sidebarOpen = ref(false)
+const chat = useChat()
+const messages = computed(() => chat.activeThread.value?.messages ?? [])
+const threads = chat.threads
+const activeId = chat.activeId
+const loading = chat.loading
+const error = chat.error
+
+function createThread() { chat.createThread(); sidebarOpen.value = false }
+function selectThread(id: string) { chat.selectThread(id); sidebarOpen.value = false }
+function removeThread(id: string) { chat.deleteThread(id) }
 </script>
 
 <template>
-  <header class="border-b border-white/10 bg-slate-950/80 backdrop-blur">
-    <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-      <RouterLink class="font-bold text-brand-500" to="/">Vue Starter</RouterLink>
-      <RouterLink class="text-sm text-slate-300 hover:text-white" to="/about">O projekcie</RouterLink>
-    </nav>
-  </header>
-  <main><RouterView /></main>
+  <div class="flex min-h-screen bg-surface">
+    <ThreadList :threads="threads" :active-id="activeId" :open="sidebarOpen" @select="selectThread" @create="createThread" @remove="removeThread" @close="sidebarOpen = false" />
+    <ChatPanel :messages="messages" :loading="loading" :error="error" @send="chat.sendMessage" @stop="chat.stop" @menu="sidebarOpen = true" />
+  </div>
 </template>
